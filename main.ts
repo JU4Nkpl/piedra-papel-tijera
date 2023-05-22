@@ -38,6 +38,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
     }
 })
+input.onGesture(Gesture.Shake, function () {
+    basic.clearScreen()
+})
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
         radio.setGroup(220)
