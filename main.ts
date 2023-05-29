@@ -1,7 +1,3 @@
-let Mi_jugada = 0
-let piedra = 0
-let tijera = 0
-let papel = 0
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
         if (Mi_jugada == 1) {
@@ -27,13 +23,12 @@ radio.onReceivedNumber(function (receivedNumber) {
         } else if (Mi_jugada == 3) {
             basic.showString("empate")
         }
-        basic.pause(2000)
-        basic.clearScreen()
     }
+    basic.pause(2000)
+    basic.clearScreen()
+    Mi_jugada = 0
 })
 input.onButtonPressed(Button.A, function () {
-    radio.setGroup(220)
-    basic.pause(500)
     basic.showLeds(`
         . # # # .
         # # # # #
@@ -41,6 +36,7 @@ input.onButtonPressed(Button.A, function () {
         # # # # #
         . # # # .
         `)
+    basic.pause(500)
     piedra = 1
     Mi_jugada = 1
     radio.sendNumber(1)
@@ -49,8 +45,6 @@ input.onGesture(Gesture.Shake, function () {
     basic.clearScreen()
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.setGroup(220)
-    basic.pause(500)
     basic.showLeds(`
         # # . # #
         # # . # #
@@ -58,13 +52,12 @@ input.onButtonPressed(Button.AB, function () {
         . # . # .
         # . . . #
         `)
+    basic.pause(500)
     tijera = 3
     Mi_jugada = 3
     radio.sendNumber(3)
 })
 input.onButtonPressed(Button.B, function () {
-    radio.setGroup(220)
-    basic.pause(500)
     basic.showLeds(`
         . # # # .
         . # # # .
@@ -72,7 +65,13 @@ input.onButtonPressed(Button.B, function () {
         . # # # .
         . . . . .
         `)
+    basic.pause(500)
     papel = 2
     Mi_jugada = 2
     radio.sendNumber(2)
 })
+let papel = 0
+let tijera = 0
+let piedra = 0
+let Mi_jugada = 0
+radio.setGroup(220)
